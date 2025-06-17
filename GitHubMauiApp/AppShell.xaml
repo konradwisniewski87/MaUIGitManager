@@ -3,28 +3,24 @@
     x:Class="GitHubMauiApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:GitHubMauiApp"
+    xmlns:views="clr-namespace:GitHubMauiApp.Views"
     Title="GitHubMauiApp">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    <ShellContent
         Title="Login"
-        ContentTemplate="{DataTemplate local:LoginPage}"
+        ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
     <ShellContent
         Title="Repositories"
-        ContentTemplate="{DataTemplate local:RepositoryListPage}"
+        ContentTemplate="{DataTemplate views:RepositoryListPage}"
         Route="RepositoryListPage" />
     <ShellContent
         Title="Issues"
-        ContentTemplate="{DataTemplate local:IssueListPage}"
+        ContentTemplate="{DataTemplate views:IssueListPage}"
         Route="IssueListPage" />
     <ShellContent
         Title="Edit Issue"
-        ContentTemplate="{DataTemplate local:IssueEditPage}"
+        ContentTemplate="{DataTemplate views:IssueEditPage}"
         Route="IssueEditPage" />
 
 </Shell>
