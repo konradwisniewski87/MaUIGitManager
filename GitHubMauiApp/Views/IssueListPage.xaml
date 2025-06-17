@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitHubMauiApp.Views.IssueListPage"
+             Title="Issues">
+    <Grid>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <Label Text="{Binding Error}" TextColor="Red" IsVisible="{Binding Error, Converter={StaticResource StringNotNullOrEmptyConverter}}" />
+            <CollectionView ItemsSource="{Binding Issues}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5" Padding="10" HasShadow="True">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                <Label Text="{Binding Body}" FontSize="12" />
+                                <HorizontalStackLayout Spacing="10">
+                                    <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type local:IssueListPage}}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}" />
+                                    <Button Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type local:IssueListPage}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+        <Button x:Name="AddIssueButton" Text="+" WidthRequest="56" HeightRequest="56" CornerRadius="28" FontSize="32" BackgroundColor="DodgerBlue" TextColor="White" VerticalOptions="End" HorizontalOptions="End" Margin="20" />
+    </Grid>
+</ContentPage> 

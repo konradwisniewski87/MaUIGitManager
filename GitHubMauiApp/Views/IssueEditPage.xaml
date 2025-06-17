@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitHubMauiApp.Views.IssueEditPage"
+             Title="Edit Issue">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="{Binding IsEditMode, Converter={StaticResource EditModeToTitleConverter}}" FontSize="24" HorizontalOptions="Center" />
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        <Label Text="{Binding Error}" TextColor="Red" IsVisible="{Binding Error, Converter={StaticResource StringNotNullOrEmptyConverter}}" />
+        <Entry Placeholder="Title" Text="{Binding Issue.Title}" />
+        <Editor Placeholder="Description" Text="{Binding Issue.Body}" AutoSize="TextChanges" HeightRequest="120" />
+        <Button Text="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}" />
+    </VerticalStackLayout>
+</ContentPage> 

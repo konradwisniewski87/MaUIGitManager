@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitHubMauiApp.Views.LoginPage"
+             Title="GitHub Login">
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+        <Label Text="Sign in to GitHub" FontSize="24" HorizontalOptions="Center" />
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        <Label Text="{Binding Error}" TextColor="Red" IsVisible="{Binding Error, Converter={StaticResource StringNotNullOrEmptyConverter}}" />
+        <Button Text="Login with GitHub"
+                Command="{Binding LoginCommand}"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage> 
